@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/wind.css">
+</head>
+
+<body>
+    <!-- 最外層包一個 div，為了不跟裡面 div 混淆這邊用 section -->
+    <section class="augurio-collapse">
+
+        <!-- 一個 .collapse 是一組-->
+        <div class="collapse">
+            <!-- title-->
+            <div class="title-box">
+                <div class="title">collapse-title-1</div>
+                <div class="icons"><span></span><span></span></div>
+            </div>
+
+            <!-- contents-->
+            <div class="contents-box">
+                <div class="contents">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam ducimus, illum vitae nam <br>
+                        officia quidem iste maxime provident! Temporibus repellat nulla blanditiis at accusamus minima <br>
+                        delectus aut doloribus officia deserunt. <br>
+                       sldjfhew  vlknwrflkw vgw  jgmwep;jmg wfkw; weglj <br>
+                       fweigjqewpg fwe;l    powgjepwegj   kvwe  wekg'pewkg'. <br>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="collapse">
+            <!-- title-->
+            <div class="title-box">
+                <div class="title">collapse-title-2</div>
+                <div class="icons"><span></span><span></span></div>
+            </div>
+
+            <!-- contents-->
+            <div class="contents-box">
+                <div class="contents">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam ducimus, illum vitae nam <br>
+                        officia quidem iste maxime provident! Temporibus repellat nulla blanditiis at accusamus minima <br>
+                        delectus aut doloribus officia deserunt. <br>
+                       sldjfhew  vlknwrflkw vgw  jgmwep;jmg wfkw; weglj <br>
+                       fweigjqewpg fwe;l    powgjepwegj   kvwe  wekg'pewkg'. <br>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+
+            // 寫入各 .content-box 的高，然後高度設成 0
+            const contents = document.querySelectorAll('.augurio-collapse .contents-box');
+            Array.prototype.forEach.call(contents, c => {
+                c.dataset.height = c.offsetHeight;
+                c.setAttribute('style', 'height: 0');
+            });
+
+            // .title-box 被點擊時，加入 .active， .content-box的高度抓 data-height 的
+            const titles = document.querySelectorAll('.title-box');
+            Array.prototype.forEach.call(titles, t => {
+                t.addEventListener('click', e => {
+                    e.target.classList.toggle('active'); // 加入/移除 .active
+
+                    // .title-box 同一層的 .contents-box
+                    const content = e.target.parentNode.querySelector('.contents-box');
+                    const height = content.dataset.height; // 從 dat-height 抓原本高度
+
+                    // 判斷 .title-box 有沒有 .active
+                    if (e.target.classList.contains('active')) {
+                        // 有 .active，就設高
+                        content.setAttribute('style', 'height: ' + height + 'px');
+                    } else {
+                        // 沒有，高度歸 0
+                        content.setAttribute('style', 'height: 0');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>

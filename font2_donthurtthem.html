@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0 auto;
+        }
+        @font-face {
+        font-family: 'NotoSansTC';
+        src: url(https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,500,700,900&display=swap&subset=chinese-traditional);
+             
+}
+.ml15 {
+  font-weight: 500px;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+}
+
+.ml15 .word {
+  display: inline-block;
+  line-height: 1em;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+    </style>
+</head>
+<body>
+    <h1 class="ml15">
+        <span class="word">Out</span>
+        <span class="word">現在</span>
+        <span class="word">them!</span>
+     </h1>            
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script type="text/javascript">
+  anime.timeline({loop: true})
+  .add({
+    targets: '.ml15 .word',
+    scale: [14,1],
+    opacity: [0,1],
+    easing: "easeOutCirc",
+    duration: 800,
+    delay: (el, i) => 800 * i
+  }).add({
+    targets: '.ml15',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>
+</body>
+</html>
